@@ -165,7 +165,7 @@
       #error TODO: Unknown Apple target
    #endif
 
-#elif defined(__linux__) && (defined(__i386__) || defined(__x86_64__)) && !defined(LZHAM_ANSI_CPLUSPLUS) 
+#elif defined(__linux__) && (defined(__riscv) || defined(__i386__) || defined(__x86_64__)) && !defined(LZHAM_ANSI_CPLUSPLUS)
    // --- Generic GCC/clang path for x86/x64, clang or GCC, Linux, OSX, FreeBSD or NetBSD, pthreads for threading, GCC built-ins for atomic ops.
    #define LZHAM_PLATFORM_PC 1
 

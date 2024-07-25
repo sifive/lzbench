@@ -73,7 +73,8 @@ endif
 
 
 DEFINES     += $(addprefix -I$(SOURCE_PATH),. brotli/include libcsc libdeflate xpack/common xz xz/api xz/check xz/common xz/lz xz/lzma xz/rangecoder zstd/lib zstd/lib/common)
-DEFINES     += -DHAVE_CONFIG_H -DFL2_SINGLETHREAD
+# DEFINES     += -DHAVE_CONFIG_H -DFL2_SINGLETHREAD
+DEFINES     += -DHAVE_CONFIG_H -DZSTD_MULTITHREAD -DMYTHREAD_ENABLED
 CODE_FLAGS  += -Wno-unknown-pragmas -Wno-sign-compare -Wno-conversion
 OPT_FLAGS   ?= -fomit-frame-pointer -fstrict-aliasing -ffast-math
 

@@ -1,10 +1,10 @@
 Introduction
 -------------------------
 
-lzbench is an in-memory benchmark of open-source LZ77/LZSS/LZMA compressors. It joins all compressors into a single exe. 
-At the beginning an input file is read to memory. 
-Then all compressors are used to compress and decompress the file and decompressed file is verified. 
-This approach has a big advantage of using the same compiler with the same optimizations for all compressors. 
+lzbench is an in-memory benchmark of open-source LZ77/LZSS/LZMA compressors. It joins all compressors into a single exe.
+At the beginning an input file is read to memory.
+Then all compressors are used to compress and decompress the file and decompressed file is verified.
+This approach has a big advantage of using the same compiler with the same optimizations for all compressors.
 The disadvantage is that it requires source code of each compressor (therefore Slug or lzturbo are not included).
 
 |Status   |
@@ -64,7 +64,7 @@ make BUILD_ARCH=32-bit
 
 The default linking for Linux is dynamic and static for Windows. This can be changed with `make BUILD_STATIC=0/1`.
 
-To remove one of compressors you can add `-DBENCH_REMOVE_XXX` to `DEFINES` in Makefile (e.g. `DEFINES += -DBENCH_REMOVE_LZ4` to remove LZ4). 
+To remove one of compressors you can add `-DBENCH_REMOVE_XXX` to `DEFINES` in Makefile (e.g. `DEFINES += -DBENCH_REMOVE_LZ4` to remove LZ4).
 You also have to remove corresponding `*.o` files (e.g. `lz4/lz4.o` and `lz4/lz4hc.o`).
 
 lzbench was tested with:
@@ -76,8 +76,8 @@ lzbench was tested with:
 
 Supported compressors
 -------------------------
-**Warning**: some of the compressors listed here have security issues and/or are 
-no longer maintained.  For information about the security of the various compressors, 
+**Warning**: some of the compressors listed here have security issues and/or are
+no longer maintained.  For information about the security of the various compressors,
 see the [CompFuzz Results](https://github.com/nemequ/compfuzz/wiki/Results) page.
 
  - [blosclz 2.0.0](https://github.com/Blosc/c-blosc2)
@@ -333,3 +333,9 @@ The results sorted by ratio are available [here](lzbench18_sorted.md).
 | zstd 1.4.3 -18          |  3.58 MB/s |   912 MB/s |    53690572 | 25.33 |
 | zstd 1.4.3 -22          |  2.28 MB/s |   865 MB/s |    52738312 | 24.88 |
 
+
+## RISC-V fixes
+
+```
+LINK=/usr/bin/riscv64-suse-linux-gcc CC=/usr/bin/riscv64-suse-linux-gcc CXX=/usr/bin/riscv64-suse-linux-g++ DONT_BUILD_GLZA=1 DONT_BUILD_TORNADO=1 BUILD_STATIC=1 ZSTD_MULTITHREAD=1 CODE_FLAGS="-march=rv64gc_zba_zbb_sscofpmf_zihintpause" make
+```

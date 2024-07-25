@@ -41,22 +41,22 @@
 	typedef LARGE_INTEGER bench_rate_t;
 	typedef LARGE_INTEGER bench_timer_t;
 	#define InitTimer(rate) if (!QueryPerformanceFrequency(&rate)) { printf("QueryPerformance not present"); };
-	#define GetTime(now) QueryPerformanceCounter(&now); 
+	#define GetTime(now) QueryPerformanceCounter(&now);
 	#define GetDiffTime(rate, start_ticks, end_ticks) (1000000000ULL*(end_ticks.QuadPart - start_ticks.QuadPart)/rate.QuadPart)
 	void uni_sleep(UINT milisec) { Sleep(milisec); };
     #ifndef fseeko
 		#ifdef _fseeki64
-            #define fseeko _fseeki64 
+            #define fseeko _fseeki64
             #define ftello _ftelli64
 		#else
-            #define fseeko fseek 
+            #define fseeko fseek
             #define ftello ftell
         #endif
 	#endif
 	#define PROGOS "Windows"
 #else
     #include <stdarg.h> // va_args
-	#include <time.h>   
+	#include <time.h>
 	#include <unistd.h>
 	#include <sys/resource.h>
 	void uni_sleep(uint32_t milisec) { usleep(milisec * 1000); };
